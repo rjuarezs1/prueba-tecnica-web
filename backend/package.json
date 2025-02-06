@@ -1,0 +1,31 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "* Crear un **CRUD** para tareas que incluya campos como `title`, `description`, `status`, `due_date`.\r * Implementar autenticación con Laravel **Passport**, **JWT** o **Spring Security**.\r * Crear un middleware que verifique que el usuario autenticado es el propietario de la tarea.\r * Implementar validaciones para los campos, ejemplo: `due_date` debe ser una fecha futura.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "raul",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.12.0",
+    "path": "^0.12.7",
+    "sequelize": "^6.37.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.7",
+    "@babel/node": "^7.26.0",
+    "@babel/preset-env": "^7.26.7",
+    "colors": "^1.4.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9"
+  }
+}
