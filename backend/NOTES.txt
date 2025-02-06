@@ -6,7 +6,21 @@ A) PARA INICIALIZAR EL SERVIDOR DE NODEJS:
 las dependencias necesarias para el servidor de nodejs.
 NOTA: Si existieran problemas con la importación de algunas dependencias dev, 
 desde la línea de comandos entrar a la carpeta raíz de prueba-tecnica-web/backend/
-y ejecutar: npm i @babel/core @babel/node @babel/preset-env colors morgan nodemon -D
+y ejecutar: npm i @babel/core @babel/node @babel/preset-env colors morgan nodemon -D,
+si se desea es posible también generar registros random para poblar la tabla products 
+desde un inicio, para ello se recomienda instalar el paquete de desarrollo fakerjs 
+desde la línea de comando de la siguiente forma: 
+npm install @faker-js/faker --save-dev
+luego solamente se descomenta la siguiente utilidad:
+import { generate_random_products } from "./utils/initialProductSetup"
+y también se descomenta la ejecución de la función generate_random_products() en el 
+archivo app.js, sin embarbo tambíen es posible crear los productos uno a uno desde
+la interfáz de usuario.
+En caso en la línea de comandos aparece un error proveniente de la base de datos, es posible
+que se esté tratando de insertar un nombre faker que ya existe dentro de la tabla products
+ya que la misma tiene como atributo la opcion de unique, en ese caso simplemente cancelar 
+el servidor y volverlo a ejecutar con npm run dev, y deberia mostrar un mensaje en la 
+línea de comandos: "5 registros aleatorios generados con éxito".
 
 El servidor backend funciona con las siguientes dependencias:
 
@@ -17,25 +31,25 @@ El servidor backend funciona con las siguientes dependencias:
     "cors": "2.8.5",
     "express": "4.21.2",
     "express-validator": "7.2.1",
-    "formidable": "3.5.2",
     "jsonwebtoken": "9.0.2",
     "mysql2": "3.12.0",
     "path": "0.12.7",
     "sequelize": "6.37.5"
   },
 
-Para propositos de desarrollo el servidor backend funciona con las siguientes
+Para motivos de desarrollo el servidor backend funciona con las siguientes
 dependencias dev:
 
   "devDependencies": {
     "@babel/core": "7.26.7",
     "@babel/node": "7.26.0",
     "@babel/preset-env": "7.26.7",
+    "@faker-js/faker": "9.4.0",
     "colors": "1.4.0",
     "morgan": "1.10.0",
     "nodemon": "3.1.9"
   }
 
 B) Dentro de la carpeta backend/src/db/ se encuentra el archivo mysql_initial_setup.txt,
-el cual por medio de la ejecución de SQL, ermite la configuración necesaria, previo a la utilización
-del ORM sequelize del lado del servidor, con el uso de mysql como base de datos.
+el cual continene las sentencias SQL necesarias a ejecutar en la base de datos mysql, previo 
+a la utilización del ORM por parte de sequelize del lado del servidor.

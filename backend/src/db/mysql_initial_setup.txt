@@ -1,0 +1,9 @@
+CREATE DATABASE db_raul_mineco
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_spanish_ci;
+
+USE db_raul_mineco;
+
+CREATE USER raul@localhost IDENTIFIED BY 'raul18000';
+
+GRANT SELECT, INSERT, CREATE, ALTER, LOCK TABLES, CREATE TEMPORARY TABLES, UPDATE, EXECUTE, REFERENCES, INDEX, DROP, DELETE ON db_raul_mineco.* TO raul@localhost;
