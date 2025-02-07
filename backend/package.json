@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "* Crear un **CRUD** para tareas que incluya campos como `title`, `description`, `status`, `due_date`.\r * Implementar autenticación con Laravel **Passport**, **JWT** o **Spring Security**.\r * Crear un middleware que verifique que el usuario autenticado es el propietario de la tarea.\r * Implementar validaciones para los campos, ejemplo: `due_date` debe ser una fecha futura.",
+  "description": "**CRUD** para productos con campos como `name`, `description`, `price`, `stock`.",
   "main": "index.js",
   "scripts": {
     "start": "node --env-file=.env dist/index.js",
