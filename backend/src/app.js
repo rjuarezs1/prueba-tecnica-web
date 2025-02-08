@@ -7,6 +7,7 @@ import genErr from "./middlewares/genErrHandler";
 import { genTryCatch } from "./middlewares/genTryCatchHandler";
 import DevErr from "./utils/DevErrHandler";
 import productRoutes from "./routes/product.routes";
+import userRoutes from "./routes/user.routes";
 // *descomentar la línea de abajo para realizar una prueba de la conexión hacia mysql con sequelize
 // import mysql_test_con from "./models/product.models";
 // *descomentar la línea de abajo para generar y crear registros random en la tabla products
@@ -36,6 +37,7 @@ app.use(
 app.use(cookieParser());
 
 // RUTAS DE LA API REST
+app.use("/api/v1", userRoutes);
 app.use("/api/v1", productRoutes);
 
 // *se verifican rutas inexistentes y se lanza una respuesta con el error customizado

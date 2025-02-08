@@ -1,6 +1,5 @@
 import { Sequelize, Model, DataTypes } from "sequelize";
 import { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PWD } from "../config/config";
-// import colors from "colors";
 
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PWD, {
   host: DB_HOST,

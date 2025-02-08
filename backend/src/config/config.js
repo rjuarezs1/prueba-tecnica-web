@@ -15,6 +15,6 @@ export const urlOrigin = [
   "http://localhost:4002",
   "http://127.0.0.1:4003",
   "http://localhost:4003",
-  "http://127.0.0.1:8080",
-  "http://localhost:8080",
+  "http://127.0.0.1:4004",
+  "http://localhost:4004",
 ];
