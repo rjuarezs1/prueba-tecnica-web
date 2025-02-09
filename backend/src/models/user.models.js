@@ -52,10 +52,6 @@ User.init(
       defaultValue: null,
       allowNull: true,
     },
-    role: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-    },
   },
   {
     sequelize,

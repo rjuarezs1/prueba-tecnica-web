@@ -9,7 +9,7 @@ export const all_products = genTryCatch(async (req, res) => {
   // todos los objetos de la tabla products.
   const productos = await Product.findAll({
     attributes: {
-      exclude: ["updatedAt"],
+      exclude: ["createdAt", "updatedAt"],
     },
   });
 

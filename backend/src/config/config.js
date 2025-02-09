@@ -5,6 +5,7 @@ export const {
   DB_PWD = process.env.DB_PWD,
   DB_NAME = process.env.DB_NAME,
   ACCESS_TOKEN = process.env.ACCESS_TOKEN,
+  REFRESH_TOKEN = process.env.REFRESH_TOKEN,
 } = process.env;
 
 export const { PORT = 4003 } = process.env;
