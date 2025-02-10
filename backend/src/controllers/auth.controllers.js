@@ -64,14 +64,16 @@ export const signin = genTryCatch(async (req, res) => {
     });
   }
 
-  res.cookie("jwt", refresh_token, {
-    httpOnly: true,
-    sameSite: "None",
-    maxAge: 24 * 60 * 60 * 1000,
-  });
-
-  res.status(200).json({
-    ok: true,
-    body: access_token,
-  });
+  res
+    .cookie("jwt", refresh_token, {
+      httpOnly: true,
+      sameSite: "None",
+      maxAge: 24 * 60 * 60 * 1000,
+    })
+    .header("authorization", access_token)
+    .status(200)
+    .json({
+      ok: true,
+      body: access_token,
+    });
 });

@@ -29,3 +29,18 @@ export const signup = genTryCatch(async (req, res) => {
     body: "NUEVO USUARIO CREADO",
   });
 });
+
+export const all_users = genTryCatch(async (req, res) => {
+  // se realiza el model querying de sequelize para obtener
+  // todos los objetos de la tabla products.
+  const usuarios = await User.findAll({
+    attributes: {
+      exclude: ["password", "createdAt", "updatedAt"],
+    },
+  });
+
+  res.status(200).json({
+    ok: true,
+    body: usuarios,
+  });
+});
