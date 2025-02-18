@@ -5,6 +5,8 @@ import { onBeforeMount } from "vue";
 // import Swal from "sweetalert2"; // Import Swal
 const auth = useAuthStore();
 
+// Se envía la referencia correspondiente a la función que permite
+// gestionar el deslogueo y actualizar los estados del useAuthStore.
 onBeforeMount(() => {
   logout_handler(auth);
 });

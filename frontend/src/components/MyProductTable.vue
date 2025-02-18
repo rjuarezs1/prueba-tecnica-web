@@ -1,6 +1,8 @@
 <script setup>
 import { ref, watch, nextTick } from "vue";
-import DataTable from "datatables.net-dt"; // Import DataTables CSS and JS
+// Se utiliza un ejemplo de dataTable para la presentación de los datos
+// provenientes del props.list_of_products.
+import DataTable from "datatables.net-dt";
 import { useAuthStore, ivaOneProductStore } from "@/stores";
 import { useRouter } from "vue-router";
 
@@ -25,14 +27,18 @@ watch(
     if (newList && newList.body && newList.body.length > 0) {
       nextTick(() => {
         if (table.value) {
-          table.value.clear().destroy(); // Clear and destroy previous DataTable instance if it exists
+          // Limpia o destruye cualquier instancia existente de la tabla
+          table.value.clear().destroy();
         }
         table.value = new DataTable("#example", {
           responsive: true,
           paging: true,
           searching: true,
           info: true,
-          stateSave: true, // Enable state saving
+          // Activa y guarda los estados ante cualquier acccion de la tabla,
+          // ejemplo la cantidad de rows por pagina se mantendra aún despues
+          // de cualquier edición o eliminación de un producto de la tabla.
+          stateSave: true,
         });
       });
     }
@@ -41,6 +47,7 @@ watch(
 </script>
 
 <template>
+  <!-- como ejemplo se muestra el estado token que persiste despues del inicio de sesión -->
   <div v-if="auth.token !== null" class="col-6 text-truncate">
     {{ auth.token }}
   </div>
@@ -110,6 +117,7 @@ watch(
   </div>
 </template>
 
+// Algunos estilos css específicos para el componente dataTable MyProductTable.vue
 <style scoped>
 #product-edit-button {
   background: #41b883;

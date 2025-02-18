@@ -10,19 +10,21 @@ const bg_color = ref("#41b883");
 const auth = useAuthStore();
 auth.clearData();
 
-// referencias del form y sus atributos
+// Referencias a enviar durante el submit del formulario
 const signin_form = useTemplateRef("signin-form");
 const email_form = useTemplateRef("email-form");
 const password_form = useTemplateRef("password-form");
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  // función que permite tratar el auth de stores
-  // así como enviar los valores de los inputs del formulario
+  // Función que permite enviar las referencias hacia el store correspondiente
+  // en este caso hacia el useAuthStore.
   login_submit_handler(auth, email_form, password_form);
 };
 
-// verifica el valor de auth.errors y muestra un sweet alert
+// Verifica el estado de la referencia errors del useAuthStore
+// mostrando un sweet alert de acuerdo al valor que persista durante la
+// ejecución de la aplicación.
 function getAuthErrorsValue() {
   if (auth.errors === null) return;
   return auth.errors;
@@ -40,7 +42,7 @@ function handleErrorChange(newError) {
 
 watch(getAuthErrorsValue, handleErrorChange);
 
-// ejecuta el handleSubmit tras la escucha del evento submit del formulario
+// Ejecuta el handleSubmit tras la escucha del evento submit del formulario
 onMounted(() => {
   signin_form.value.addEventListener("submit", handleSubmit);
 });

@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-// import AboutView from "../views/AboutView.vue";
 import SignIn from "@/views/SignIn.vue";
 import SignUp from "@/views/SignUp.vue";
 import ProductView from "@/views/ProductView.vue";
@@ -10,6 +9,8 @@ import DeleteProductView from "../views/DeleteProductView.vue";
 import LogOutView from "@/views/LogOutView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 
+// Configuración del routing de la aplicación mediante vue-router y las
+// Vistas creadas para la navegación.
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [

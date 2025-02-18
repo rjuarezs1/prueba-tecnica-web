@@ -1,5 +1,5 @@
-// tratamiento correspondiente de los valores provenientes de las referencias del formulario
-// luego se envían a la función signin del auth stores en "@/stores"
+// Tratamiento correspondiente sobre las referencias del formulario
+// y las instancias de los stores en "@/stores"
 export const login_submit_handler = (auth, email_form, password_form) => {
   let formData = new FormData();
   formData.append("email", email_form.value.value);

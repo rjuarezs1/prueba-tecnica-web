@@ -17,8 +17,10 @@ export const useProductStore = defineStore("product", () => {
   const data = ref([]);
 
   async function get() {
-    // se asigna la respuesta proveniente del fetch ejecutado dentro de la función
-    // get_products de los servicios del "@/services/getApi.js"
+    // Se obtiene un objeto Array con la información o datos de los productos
+    // que se encuentran dentro de la tabla products de la base de datos Mysql,
+    // mediante la función get_products de los servicios del "@/services/getApi.js"
+    // asignandolos al valor de la referencia data del store correspondiente.
     data.value = await get_products();
   }
 
@@ -29,6 +31,10 @@ export const oneProductStore = defineStore("oneProduct", () => {
   const data = ref({});
   const body = ref({});
   async function get_one(param) {
+    // Se obtiene un objeto Array con la información del producto encontrado
+    // dentro de la tabla products de la base de datos Mysql,
+    // mediante la función get_product de los servicios del "@/services/getApi.js"
+    // asignandolos al valor de la referencia data del store correspondiente.
     data.value = await get_product(param);
     body.value = data.value.body;
     if (body.value === null) {
@@ -55,12 +61,19 @@ export const putOneProductStore = defineStore("putOneProduct", () => {
     });
 
     if (isConfirmed.isConfirmed) {
+      // Se obtiene un objeto Array con la información del la actualización
+      // sobre el producto encontrado dentro de la tabla products de la base
+      // de datos Mysql, mediante la función put_product de los servicios
+      // del "@/services/getApi.js" asignandolos al valor de la referencia
+      // data del store correspondiente.
       data.value = await put_product(param, form_data);
       ok.value = data.value.ok;
 
       if (ok.value === false) {
         errors.value = data.value.errors;
         if (Array.isArray(errors.value)) {
+          // se asigna parte del array errors proveniente del validator del endpoint correspondiente
+          // del lado del backend ó api rest.
           errors.value = data.value.errors[0].path + "-" + data.value.errors[0].msg;
           console.log("putProduct store", errors.value);
         } else {
@@ -104,6 +117,8 @@ export const postOneProductStore = defineStore("postOneProduct", () => {
       if (ok.value === false) {
         errors.value = data.value.errors;
         if (Array.isArray(errors.value)) {
+          // se asigna parte del array errors proveniente del validator del endpoint correspondiente
+          // del lado del backend ó api rest.
           errors.value = data.value.errors[0].path + "-" + data.value.errors[0].msg;
           console.log("postProduct stores", errors.value);
         } else {
@@ -147,6 +162,8 @@ export const postOneUserStore = defineStore("postOneUser", () => {
       if (ok.value === false) {
         errors.value = data.value.errors;
         if (Array.isArray(errors.value)) {
+          // se asigna parte del array errors proveniente del validator del endpoint correspondiente
+          // del lado del backend ó api rest.
           errors.value = data.value.errors[0].path + "-" + data.value.errors[0].msg;
           console.log("postUser stores", errors.value);
         } else {
@@ -184,12 +201,19 @@ export const delOneProductStore = defineStore("delOneProduct", () => {
     });
 
     if (isConfirmed.isConfirmed) {
+      // Se obtiene un objeto Array con la información del la actualización
+      // sobre el producto encontrado dentro de la tabla products de la base
+      // de datos Mysql, mediante la función delete_product de los servicios
+      // del "@/services/getApi.js" asignandolos al valor de la referencia
+      // data del store correspondiente.
       data.value = await delete_product(param);
       ok.value = data.value.ok;
 
       if (ok.value === false) {
         errors.value = data.value.errors;
         if (Array.isArray(errors.value)) {
+          // se asigna parte del array errors proveniente del validator del endpoint correspondiente
+          // del lado del backend ó api rest.
           errors.value = data.value.errors[0].path + "-" + data.value.errors[0].msg;
           console.log("delProduct stores", errors.value);
         } else {
@@ -233,6 +257,8 @@ export const useAuthStore = defineStore("auth", () => {
     if (ok.value === false) {
       errors.value = data.value.errors;
       if (Array.isArray(errors.value)) {
+        // se asigna parte del array errors proveniente del validator del endpoint correspondiente
+        // del lado del backend ó api rest.
         errors.value = data.value.errors[0].path + "-" + data.value.errors[0].msg;
         console.log("auth stores:", errors.value);
       } else {
@@ -274,7 +300,9 @@ export const useAuthStore = defineStore("auth", () => {
     }
   }
 
-  // Watch for changes in token and save to localStorage
+  // Verifica cualquier cambio en la referencia token
+  // actualizando dicha información de manera local para la persistencia
+  // de su estado mientras el usuario este logueado.
   watch(token, (newToken) => {
     if (newToken) {
       localStorage.setItem("authToken", newToken);
@@ -286,6 +314,9 @@ export const useAuthStore = defineStore("auth", () => {
   return { data, ok, token, errors, signin, logout, clearData };
 });
 
+// El siguiente store permite gestionar un servicio para mostrar al usuario
+// el valor correspondiente del impuesto al valor agregado
+// de cada producto del dataTable del componente MyProductTable.vue
 export const ivaOneProductStore = defineStore("ivaOneProduct", () => {
   const price = ref(0);
   const iva = computed(() => (price.value * 0.12).toFixed(2));

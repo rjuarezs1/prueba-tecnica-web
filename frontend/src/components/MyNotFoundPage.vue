@@ -1,6 +1,8 @@
 <script setup></script>
 
 <template>
+  <!-- El presente div se muestra como un mensaje para el usuario, cuando éste
+  trate de acceder a cualquier ruta que haga match de la ruta "/:pathMatch(.*)*" -->
   <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
     <div class="mx-auto max-w-screen-sm text-center">
       <h1 class="mb-4">404</h1>

@@ -17,12 +17,14 @@ const stock = useTemplateRef("stock");
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  // función que permite tratar el putProduct de stores el props.param
-  // así como enviar los valores de los inputs del formulario
+  // Función que permite enviar las referencias hacia el store correspondiente
+  // en este caso hacia el postOneProductStore.
   post_handler(postProduct, name.value, description.value, price.value, stock.value);
 };
 
-// verifica el valor de stores postProduct.errors y muestra un sweet alert
+// Verifica el estado de la referencia errors del postOneProductStore
+// mostrando un sweet alert de acuerdo al valor que persista durante la
+// ejecución de la aplicación.
 function getAuthErrorsValue() {
   if (postProduct.errors === null) return;
   return postProduct.errors;
@@ -40,13 +42,14 @@ function handleErrorChange(newError) {
 
 watch(getAuthErrorsValue, handleErrorChange);
 
-// ejecuta el handleSubmit tras la escucha del evento submit del formulario
+// Ejecuta el handleSubmit tras la escucha del evento submit del formulario
 onMounted(() => {
   post_form.value.addEventListener("submit", handleSubmit);
 });
 </script>
 
 <template>
+  <!-- como ejemplo se muestra el estado token que persiste despues del inicio de sesión -->
   <div v-if="auth.token !== null" class="col-6 text-truncate">
     {{ auth.token }}
   </div>

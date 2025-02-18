@@ -12,12 +12,15 @@ const props = defineProps({
   one_product: Object,
 });
 
-// Create computed reactive values for the input fields
-const signin_form = useTemplateRef("signin-form");
+// Creación de reactivos y computed para mostrar
+// los valores en los inputs del formulario, los cuales
+// provienen del props.one_product
 const name = computed(() => props.one_product.name);
 const description = computed(() => props.one_product.description);
 const price = computed(() => props.one_product.price);
 const stock = computed(() => props.one_product.stock);
+// Referencias a enviar durante el submit del formulario
+const signin_form = useTemplateRef("signin-form");
 const nombre = useTemplateRef("nombre");
 const descripcion = useTemplateRef("descripcion");
 const precio = useTemplateRef("precio");
@@ -25,8 +28,8 @@ const existencia = useTemplateRef("existencia");
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  // función que permite tratar el putProduct de stores el props.param
-  // así como enviar los valores de los inputs del formulario
+  // Función que permite enviar las referencias hacia el store correspondiente
+  // en este caso hacia el putOneProductStore.
   update_handler(
     putProduct,
     props.param,
@@ -55,15 +58,14 @@ function handleErrorChange(newError) {
 
 watch(getAuthErrorsValue, handleErrorChange);
 
-// ejecuta el handleSubmit tras la escucha del evento submit del formulario
+// Ejecuta el handleSubmit tras la escucha del evento submit del formulario
 onMounted(() => {
   signin_form.value.addEventListener("submit", handleSubmit);
 });
 </script>
 
 <template>
-  <!-- <p>{{ props.param }}</p> -->
-  <!-- <p>{{ props.one_product }}</p> -->
+  <!-- como ejemplo se muestra el estado token que persiste despues del inicio de sesión -->
   <div v-if="auth.token !== null" class="col-6 text-truncate">
     {{ auth.token }}
   </div>

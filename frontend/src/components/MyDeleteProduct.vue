@@ -9,7 +9,9 @@ const props = defineProps({
   param: String,
 });
 
-// verifica el valor de store delProduct.errors y muestra un sweet alert
+// Verifica el estado de la referencia errors del delOneProductStore
+// mostrando un sweet alert de acuerdo al valor que persista durante la
+// ejecución de la aplicación.
 function getAuthErrorsValue() {
   if (delProduct.errors === null) return;
   return delProduct.errors;
@@ -27,6 +29,9 @@ function handleErrorChange(newError) {
 
 watch(getAuthErrorsValue, handleErrorChange);
 
+// Se envía la referencia y parametro correspondiente a la función que permite
+// gestionar la eliminación de un producto en particular así como
+// actualizar los estados del delOneProductStore.
 onBeforeMount(() => {
   delete_handler(delProduct, props.param);
 });

@@ -8,6 +8,7 @@ const bg_color = ref("#41b883");
 
 const postUser = postOneUserStore();
 
+// Referencias a enviar durante el submit del formulario
 const signup_form = useTemplateRef("signup-form");
 const first_name = useTemplateRef("first-name");
 const surname = useTemplateRef("surname");
@@ -16,12 +17,14 @@ const password = useTemplateRef("password");
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  // función que permite tratar el putProduct de stores el props.param
-  // así como enviar los valores de los inputs del formulario
+  // Función que permite enviar las referencias hacia el store correspondiente
+  // en este caso hacia el postOneUserStore.
   signup_handler(postUser, first_name.value, surname.value, email.value, password.value);
 };
 
-// verifica el valor de stores putProduct.errors y muestra un sweet alert
+// Verifica el estado de la referencia errors del postOneUserStore
+// mostrando un sweet alert de acuerdo al valor que persista durante la
+// ejecución de la aplicación.
 function getAuthErrorsValue() {
   if (postUser.errors === null) return;
   return postUser.errors;
@@ -39,7 +42,7 @@ function handleErrorChange(newError) {
 
 watch(getAuthErrorsValue, handleErrorChange);
 
-// ejecuta el handleSubmit tras la escucha del evento submit del formulario
+// Ejecuta el handleSubmit tras la escucha del evento submit del formulario
 onMounted(() => {
   signup_form.value.addEventListener("submit", handleSubmit);
 });
