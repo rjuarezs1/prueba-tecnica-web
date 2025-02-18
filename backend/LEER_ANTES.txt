@@ -1,0 +1,104 @@
+---------------------------------------------------
+          BACKEND CON NOJEJS / EXPRESS / MYSQL
+---------------------------------------------------
+A) CREACIÓN DE USUARIO Y DATABASE EN MYSQL 
+
+1. Levantar y acceder a la base de datos Mysql y acceder como usuario root.
+
+-----------------------------------------------------------------------------
+
+NOTA: Se utilizó sequelize como ORM del lado del Servidor Backend.
+
+-----------------------------------------------------------------------------
+
+2. Dentro de la carpeta backend/src/db/ se encuentra el archivo mysql_initial_setup.txt,
+el cual continene las sentencias SQL básicas y necesarias a ejecutar en la 
+base de datos mysql para que el ORM de sequelize funcione del lado del servidor nodejs.
+
+B) PARA INICIALIZAR EL SERVIDOR DE NODEJS
+
+1.B) OPCIÓN DEV
+1.B.1 ingresar a la carpeta raiz de prueba-tecnica-web/backend/
+
+1.B.2 Dedede la línea de comandos o terminal, ejecutar el comando: 
+
+npm install ó npm i
+
+*El comando anterior permite instalar las dependencias necesarias para el funcionamiento
+del servidor de nodejs y express.
+
+------------------------------------------------------------------------------------
+NOTA: Si existieran problemas con la importación de algunas dependencias dev, 
+desde la línea de comandos entrar a la carpeta raíz de prueba-tecnica-web/backend/
+y ejecutar: 
+------------------------------------------------------------------------------------
+
+npm i @babel/core @babel/node @babel/preset-env colors morgan nodemon -D
+
+1.B.4) Ejecutar el siguiente comando para inicializar el servidor backend en nodejs:
+
+npm run dev
+
+Con eso ya debería mostrar un mensaje en la línea de comandos: 
+
+"50 registros aleatorios generados con éxito".
+
+*Sin embargo tambíen es posible crear los productos uno a uno desde
+la interfáz de usuario.
+
+---------------------------------------------------------------------------------
+NOTA: DEPENDENCIAS PARA EL SERVIDOR
+
+El servidor backend funciona con las siguientes dependencias:
+
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "body-parser": "1.20.3",
+    "cookie-parser": "1.4.7",
+    "cors": "2.8.5",
+    "express": "4.21.2",
+    "express-validator": "7.2.1",
+    "jsonwebtoken": "9.0.2",
+    "mysql2": "3.12.0",
+    "path": "0.12.7",
+    "sequelize": "6.37.5"
+  },
+
+Para propósito de desarrollo del backend, el servidor funciona con las siguientes
+dependencias dev:
+
+  "devDependencies": {
+    "@babel/cli": "7.26.4",
+    "@babel/core": "7.26.7",
+    "@babel/node": "7.26.0",
+    "@babel/preset-env": "7.26.7",
+    "@faker-js/faker": "9.4.0",
+    "colors": "1.4.0",
+    "morgan": "1.10.0",
+    "nodemon": "3.1.9",
+    "standard": "17.1.0"
+  }
+
+--------------------------------------------------------------------------------------
+
+1.C) OPCIÓN PRODUCCIÓN
+1.C.1 ingresar a la carpeta raiz de prueba-tecnica-web/backend/
+
+1.C.2 Dedede la línea de comandos o terminal, ejecutar el comando: 
+
+npm run build
+
+1.C.3 Dedede la misma línea de comandos o terminal, ejecutar el comando: 
+
+npm run start
+
+Si previamente se ejecutaron los comandos de la Opción DEV ya no debería mostrar 
+el mensaje en la línea de comandos: 
+
+"50 registros aleatorios generados con éxito".
+
+Si no se utilizó la Opción DEV con npm run dev, el mensaje sí debería ser mostrado.
+
+-----
+FIN.
+-----

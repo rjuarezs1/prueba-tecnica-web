@@ -5,19 +5,25 @@ const genErr = async (err, req, res, next) => {
     return res.status(err.statusCode).json({
       devErr: err.devErr,
       status: err.status,
+      ok: false,
+      body: null,
       errors: [{ msg: err.message }],
     });
   }
 
   if (err.statusCode === undefined) {
     return res.status(500).json({
-      status: "Internal Server Error",
+      status: "Error interno de servidor",
+      ok: false,
+      body: null,
       errors: [{ msg: err.errors[0].message }],
     });
   }
 
   res.status(err.statusCode).json({
-    status: "Internal Server Error",
+    status: "Error interno de servidor",
+    ok: false,
+    body: null,
     errors: [{ msg: err.message }],
   });
 };

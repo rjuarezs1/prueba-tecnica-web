@@ -17,7 +17,8 @@ export const signin = genTryCatch(async (req, res) => {
   if (userFound === null) {
     return res.status(422).json({
       ok: false,
-      body: "Unprocessable Entity",
+      body: null,
+      errors: "Entidad no procesable",
     });
   }
 
@@ -28,7 +29,8 @@ export const signin = genTryCatch(async (req, res) => {
   if (!is_granted) {
     return res.status(401).json({
       ok: false,
-      body: "Unauthorized",
+      body: null,
+      errors: "Sin autorización",
     });
   }
 
@@ -60,20 +62,40 @@ export const signin = genTryCatch(async (req, res) => {
   if (userUpdated[0] !== 1) {
     return res.status(500).json({
       ok: false,
-      body: "Internal Server Error",
+      body: null,
+      errors: "Error interno de servidor",
     });
   }
 
-  res
-    .cookie("jwt", refresh_token, {
-      httpOnly: true,
-      sameSite: "None",
-      maxAge: 24 * 60 * 60 * 1000,
-    })
-    .header("authorization", access_token)
-    .status(200)
-    .json({
-      ok: true,
-      body: access_token,
-    });
+  res.cookie("jwt", access_token, {
+    httpOnly: true, //permite acceso solamente desde peticiones http no desde e.g. windows.cookies
+    // sameSite: "None",
+    sameSite: "strict", // opción "Lax" obligatoria en producción
+    secure: true, // de esta forma es obligatorio en producción
+    // maxAge: 24 * 60 * 60 * 1000, // duración 1d
+    maxAge: 60 * 60 * 1000, // tiempo en que la cookie permanece del lado del cliente e.g 1h
+  });
+
+  res.status(200).json({
+    ok: true,
+    body: access_token,
+  });
+});
+
+export const logout = genTryCatch(async (req, res) => {
+  const { username } = req.body.decoded;
+
+  await User.update(
+    { refresh_token: null },
+    {
+      where: { username },
+    }
+  );
+
+  // Limpiar la cookie del lado del cliente
+  res.clearCookie("jwt", { path: "/", sameSite: "strict", secure: true });
+  res.status(200).json({
+    ok: true,
+    body: "Logged out exitoso",
+  });
 });

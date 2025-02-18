@@ -44,7 +44,7 @@ export const create_product = genTryCatch(async (req, res) => {
 
   res.status(201).json({
     ok: true,
-    msg: "PRODUCTO CREADO",
+    body: "nuevo producto creado",
   });
 });
 
@@ -118,5 +118,9 @@ export const delete_product = genTryCatch(async (req, res) => {
     });
   }
 
-  res.sendStatus(204);
+  // res.sendStatus(204);
+  return res.status(200).json({
+    ok: true,
+    body: `${producto_eliminado} productos eliminados`,
+  });
 });

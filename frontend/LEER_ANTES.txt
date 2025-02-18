@@ -1,0 +1,58 @@
+---------------------------------------------------
+          FRONTEND CON VUEJS 3 VITE 
+---------------------------------------------------
+A) PARA INICIALIZAR LA APLICACIÓN FRONTEND
+
+1.A.1 ingresar a la carpeta raiz de prueba-tecnica-web/frontend/
+
+1.A.2 Dedede la línea de comandos o terminal, ejecutar el comando: 
+
+npm install ó npm i
+
+*El comando anterior permite instalar las dependencias necesarias para el funcionamiento
+de la aplicación frontend en vuejs v.3 con vite 
+
+B) PARA INICIALIZAR LA APLICACIÓN FRONTEND COMO PRUEBA O DESARROLLO
+
+1.B.1 Desde la carpeta raiz de prueba-tecnica-web/frontend/
+ejecutar el siguiente comando:
+
+npm run dev
+
+Debería aparecer en la terminal el siguiente mensaje:
+
+  VITE v6.0.11  ready in 2599 ms
+
+  ➜  Local:   http://localhost:4009/
+  ➜  Network: use --host to expose
+  ➜  Vue DevTools: Open http://localhost:4009/__devtools__/ as a separate window
+  ➜  Vue DevTools: Press Alt(⌥)+Shift(⇧)+D in App to toggle the Vue DevTools
+  ➜  press h + enter to show help
+
+
+1.B.2 Ingresar a la siguiente url en el buscador del explorador:
+
+http://localhost:4009
+
+1.B.3 APARECERA EL MENÚ DE LA PÁGINA CON LAS OPCIONES SignIn y SignUp
+
+1.B.4 CREAR UN NUEVO USUARIO:
+
+Hacer click en la opción SignUp de la barra de navegación o navbar, 
+ingresar un nombre, un apellido, un correo, y el password.
+
+Al crear el nuevo usuario aparecera una ventana con el mensaje nuevo usuario creado.
+
+1.B.4 INGRESAR A LA APPLICACIÓN:
+
+Hacer click en la opción SignIn de la navbar e ingresar el correo y password
+recién creados.
+
+Esto renderizará a las opciones del CRUD básicas mediante una tabla de productos.
+
+1.B.5 Al terminar, seleccionar o hacr click en la opción de Logout de la navbar
+y con esto finalizamos.
+
+--------
+FIN.
+--------

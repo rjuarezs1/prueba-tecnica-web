@@ -26,7 +26,7 @@ export const signup = genTryCatch(async (req, res) => {
 
   res.status(201).json({
     ok: true,
-    body: "NUEVO USUARIO CREADO",
+    body: "nuevo usuario creado",
   });
 });
 

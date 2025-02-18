@@ -1,9 +1,9 @@
-CREATE DATABASE db_raul_mineco
+CREATE DATABASE db_prueba_tecnica
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_spanish_ci;
 
-USE db_raul_mineco;
+USE db_prueba_tecnica;
 
-CREATE USER raul@localhost IDENTIFIED BY 'raul18000';
+CREATE USER edgar@localhost IDENTIFIED BY 'PruebaTecnicaMinisterio2025';
 
-GRANT SELECT, INSERT, CREATE, ALTER, LOCK TABLES, CREATE TEMPORARY TABLES, UPDATE, EXECUTE, REFERENCES, INDEX, DROP, DELETE ON db_raul_mineco.* TO raul@localhost;
+GRANT SELECT, INSERT, CREATE, ALTER, LOCK TABLES, CREATE TEMPORARY TABLES, UPDATE, EXECUTE, REFERENCES, INDEX, DROP, DELETE ON db_prueba_tecnica.* TO edgar@localhost;

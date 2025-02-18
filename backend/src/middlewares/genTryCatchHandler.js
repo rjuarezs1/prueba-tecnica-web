@@ -13,6 +13,6 @@ export const validatorTryCatch = (req, res, next) => {
     validationResult(req).throw();
     next();
   } catch (error) {
-    res.status(403).json({ errors: error.array() });
+    res.status(403).json({ ok: false, body: null, errors: error.array() });
   }
 };

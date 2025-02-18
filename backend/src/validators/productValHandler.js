@@ -33,8 +33,8 @@ export const createProductValidator = [
     .isString()
     .withMessage("campo debe ser de tipo string")
     .bail()
-    .isLength({ min: 3, max: 64 })
-    .withMessage("tamaño [3-64] caracteres")
+    .isLength({ min: 2, max: 64 })
+    .withMessage("tamaño [2-64] caracteres")
     .bail()
     .escape()
     .trim(),
@@ -115,8 +115,8 @@ export const updateProductValidator = [
     .isString()
     .withMessage("campo debe ser de tipo string")
     .bail()
-    .isLength({ min: 3, max: 64 })
-    .withMessage("tamaño [3-64] caracteres")
+    .isLength({ min: 2, max: 64 })
+    .withMessage("tamaño [2-64] caracteres")
     .bail()
     .escape()
     .trim(),
